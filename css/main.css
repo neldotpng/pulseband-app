@@ -21,7 +21,7 @@ body {
     height: 100px;
     width: 200px;
     background-color: #e3e8e9;
-    z-index: 9;
+    z-index: 9999;
     display: none; }
     body .date-popup .fa {
       padding: 5px;
@@ -97,8 +97,9 @@ body {
       margin-left: 10%;
       margin-top: 5%;
       font-family: "Moon", Helvetica, Arial, sans-serif;
-      outline: none;
-      display: none; }
+      outline: none; }
+    body .edit-reminder .input-title {
+      width: 80%; }
     body .edit-reminder .input-time {
       font-size: 18px;
       margin-right: 20px; }
@@ -114,8 +115,18 @@ body {
       margin-bottom: 20px;
       font-family: "Moon", Helvetica, Arial, sans-serif;
       text-align: center; }
+    body .edit-reminder .confirm {
+      background-color: #263942;
+      color: #fafafa;
+      font-size: 16px;
+      border-radius: 0;
+      padding: 9px 30px 9px 30px;
+      cursor: pointer;
+      cursor: hand; }
     body .edit-reminder .delete {
-      background-color: #df5a49; }
+      background-color: #df5a49;
+      cursor: pointer;
+      cursor: hand; }
   body .reminder-popup {
     display: none;
     margin-left: 40%;
@@ -140,7 +151,7 @@ body {
       position: relative;
       width: 100%; }
       body .reminder-popup .tabs .tab {
-        background-color: #b6b6b7;
+        background-color: #cad0d1;
         width: 50%;
         padding: 10px;
         position: absolute;
@@ -198,6 +209,9 @@ body {
       body .reminder-popup .tabs #tab-content2 {
         display: none; }
   body .notif {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     display: none;
     width: 250px;
     background-color: #e3e8e9;
@@ -224,14 +238,18 @@ body {
       font-size: 14px;
       line-height: 1.5em; }
       body .notif li:hover {
-        background-color: #b6b6b7; }
+        background-color: #cad0d1; }
     body .notif .seeall {
       background-color: #263942;
-      color: #fafafa;
       font-family: "Moon", Helvetica, Arial, sans-serif;
       text-align: center;
       cursor: pointer;
       cursor: hand; }
+      body .notif .seeall a {
+        display: block;
+        color: #fafafa;
+        width: 100%;
+        height: 100%; }
       body .notif .seeall:hover {
         background-color: #263942; }
   body .reminder-notif {
@@ -264,7 +282,10 @@ body {
       left: 20px;
       top: 15px;
       font-size: 30px;
-      letter-spacing: 2px;
+      letter-spacing: 4px;
+      font-family: CenturyGothic, Arial, Helvetica, sans-serif;
+      font-weight: lighter;
+      text-transform: uppercase;
       color: #263942; }
       body .topbar h1 .inner_logo {
         position: absolute;
@@ -329,7 +350,7 @@ body {
         color: #263942; }
         body .topbar ul .notification .fa {
           font-size: 25px; }
-        body .topbar ul .notification div {
+        body .topbar ul .notification .reddot {
           position: relative;
           height: 15px;
           width: 15px;
@@ -338,7 +359,12 @@ body {
           top: 10px;
           left: 30px;
           z-index: 100;
-          display: block; }
+          transition: all 300ms ease-in-out; }
+          body .topbar ul .notification .reddot h2 {
+            text-align: center;
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            color: #fafafa; }
       body .topbar ul .user {
         position: relative;
         top: 12px;
@@ -377,73 +403,78 @@ body {
           body .topbar ul .reminder_header .reminder-toggle .fa {
             font-size: 40px; }
   body .leftbar {
-    z-index: 5;
+    z-index: 0;
     background-color: #334d5c;
     font-family: "Moon", Helvetica, Arial, sans-serif;
     height: 100vh;
     width: 15%;
     top: 60px; }
-    body .leftbar ul li {
-      padding-left: 10%;
+    body .leftbar ul li:hover {
+      background-color: #263942; }
+    body .leftbar ul li .fa {
+      width: 25px; }
+    body .leftbar ul li a {
+      text-decoration: none;
+      color: #8591a5;
+      display: block;
+      padding-left: 5%;
       padding-top: 20px;
       padding-bottom: 20px; }
-      body .leftbar ul li:hover {
-        background-color: #263942;
-        border-left: 5px solid #c43b73; }
-      body .leftbar ul li .fa {
-        padding-right: 7px; }
-      body .leftbar ul li a {
-        text-decoration: none;
-        color: #8591a5; }
     body .leftbar ul .active {
       border-left: 5px solid #c43b73; }
-    body .leftbar ul .signout a {
-      padding-left: 30px; }
-    body .leftbar ul .signout:hover {
-      border: none; }
+    body .leftbar ul .signout {
+      text-align: center; }
+      body .leftbar ul .signout a {
+        padding-left: 0; }
+      body .leftbar ul .signout:hover {
+        border: none; }
     body .leftbar ul .signout.active {
       border: none; }
   body .rightbar {
-    z-index: 5;
+    z-index: 0;
     background-color: #e3e8e9;
     left: 85%;
-    width: 192px;
+    width: 15%;
     top: 60px;
     height: 100vh;
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     font-weight: 400;
     color: #555555;
     line-height: 1.25em;
-    font-size: 14px; }
+    font-size: 14px;
+    min-height: 778px; }
     body .rightbar ul {
-      height: 250px;
+      height: 275px;
       overflow: hidden;
       overflow: auto;
-      margin-top: 10px;
-      margin-bottom: 10px; }
+      border-bottom: 10px solid #edf0f0; }
       body .rightbar ul li {
+        /*margin: 10px 0;*/
+        background-color: #e3e8e9;
         cursor: pointer;
         cursor: hand;
-        padding: 20px; }
+        padding: 20px;
+        border-top: 10px solid #edf0f0; }
         body .rightbar ul li:hover {
-          background-color: #b6b6b7; }
-        body .rightbar ul li p span {
-          font-style: italic; }
+          background-color: #cad0d1; }
+        body .rightbar ul li p #task-time, body .rightbar ul li p #task-date, body .rightbar ul li p #apt-date, body .rightbar ul li p #apt-time {
+          font-weight: bold; }
         body .rightbar ul li .options {
           width: 100%;
           height: 75px;
           display: none; }
           body .rightbar ul li .options .fa {
+            margin-left: 20%;
             position: relative;
             top: 50%;
-            left: 5%;
-            margin-left: 15%;
             font-size: 36px;
             cursor: pointer;
             cursor: hand;
             color: #334d5c; }
             body .rightbar ul li .options .fa:hover {
               color: #263942; }
+          body .rightbar ul li .options .fa:nth-child(2) {
+            margin-left: 15%; }
       body .rightbar ul .button a {
         border: 1px solid #555555;
         border-radius: 20px;
@@ -461,31 +492,28 @@ body {
     body .rightbar h2 {
       font-family: "Moon", Helvetica, Arial, sans-serif;
       font-weight: 700;
-      font-size: 18px;
-      padding-left: 20px;
-      padding-top: 20px;
-      padding-bottom: 20px;
+      font-size: 14px;
+      padding: 15px 0 15px 10px;
       color: #e3e8e9;
       background-color: #263942; }
+      body .rightbar h2 .fa-plus-circle {
+        float: right;
+        margin-right: 10%;
+        cursor: pointer;
+        cursor: hand;
+        font-size: 18px; }
     body .rightbar .appointments {
-      height: 150px;
+      height: 275px;
       overflow: hidden;
       overflow: auto; }
-    body .rightbar .add-reminder {
-      padding: 2% 20px 20px 20px;
-      display: inline-block;
-      color: #334d5c;
-      font-size: 48px;
-      position: relative;
-      left: 25%; }
-      body .rightbar .add-reminder:hover {
-        color: #263942; }
   body main {
     width: 65%;
     position: relative;
     left: 17.5%;
     top: 60px;
-    margin-bottom: 90px; }
+    margin-bottom: 90px;
+    min-height: 77vh;
+    /* make keyframes that tell the start state and the end state of our object */ }
     body main header {
       width: 100%;
       padding-top: 20px; }
@@ -497,11 +525,12 @@ body {
         display: inline-block;
         float: left; }
       body main header .date-picker {
+        z-index: 1;
         position: relative;
         border: 1px solid #999999;
         margin-left: 20px;
         display: inline-block;
-        width: 100px; }
+        width: 150px; }
         body main header .date-picker .fa {
           display: inline-block;
           cursor: pointer;
@@ -513,7 +542,7 @@ body {
           top: 5px; }
         body main header .date-picker .fa-caret-right {
           position: absolute;
-          left: 80px;
+          left: 130px;
           top: 5px; }
         body main header .date-picker h2 {
           display: inline-block;
@@ -524,7 +553,10 @@ body {
           padding-left: 30px;
           text-align: center; }
     body main .cards .bp, body main .cards .hr {
-      height: 500px; }
+      height: 500px;
+      -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5); }
     body main .cards li {
       margin-top: 20px;
       list-style: none;
@@ -549,7 +581,7 @@ body {
           background-color: #fafafa; }
       body main .cards li .container {
         background-color: #e3e8e9;
-        height: 40%;
+        height: 40.5%;
         width: 100%;
         padding: 5% 5% 5% 5%; }
         body main .cards li .container .stats {
@@ -557,7 +589,7 @@ body {
           height: 100%;
           width: 33.333%;
           float: left;
-          border-right: 1px solid #b6b6b7; }
+          border-right: 1px solid #cad0d1; }
           body main .cards li .container .stats h4 {
             font-family: "Roboto", Helvetica, Arial, sans-serif;
             font-size: 48px;
@@ -603,7 +635,10 @@ body {
         font-size: 72px;
         padding-right: 5px; }
     body main .cards .bloodwork {
-      height: 60%; }
+      height: 60%;
+      -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5); }
       body main .cards .bloodwork h2 {
         background-color: #1d82aa; }
       body main .cards .bloodwork .container {
@@ -613,7 +648,7 @@ body {
         body main .cards .bloodwork .container ul {
           min-height: 330px; }
           body main .cards .bloodwork .container ul li {
-            height: 325px;
+            height: 350px;
             margin: 0;
             padding-bottom: 3%;
             width: 50%;
@@ -643,6 +678,708 @@ body {
           line-height: 1.5em;
           font-family: "Roboto", Helvetica, Arial, sans-serif;
           font-weight: 300; }
+    body main .greeting {
+      width: 100%;
+      height: 80px; }
+      body main .greeting h1 {
+        font-family: "Moon", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        color: #334d5c;
+        font-size: 35px;
+        display: inline-block;
+        float: left;
+        padding-top: 20px;
+        padding-bottom: 20px; }
+      body main .greeting .date-picker {
+        z-index: 1;
+        position: relative;
+        float: left;
+        border: 1px solid #999999;
+        padding: 2px 10px 3px 10px;
+        width: 155px;
+        margin-top: 20px;
+        margin-left: 20px;
+        display: inline-block; }
+        body main .greeting .date-picker .arrow-left, body main .greeting .date-picker .arrow-right {
+          font-size: 24px;
+          color: #263942;
+          cursor: pointer;
+          cursor: hand; }
+        body main .greeting .date-picker .arrow-left {
+          float: left; }
+        body main .greeting .date-picker .arrow-right {
+          position: absolute;
+          left: 80%; }
+        body main .greeting .date-picker .arrow-mobile {
+          display: none; }
+        body main .greeting .date-picker h4 {
+          display: inline-block;
+          float: left;
+          font-family: "Moon", Helvetica, Arial, sans-serif;
+          color: #555555;
+          padding-right: 30px;
+          padding-left: 30px;
+          padding-top: 5px; }
+      body main .greeting .date-icon {
+        position: relative;
+        border: 1px solid #999999;
+        float: left;
+        margin-top: 20px;
+        padding: 5px 10px 5px 10px;
+        cursor: pointer;
+        cursor: hand; }
+        body main .greeting .date-icon .fa {
+          font-size: 20px;
+          color: #555555; }
+        body main .greeting .date-icon:hover {
+          background-color: #cad0d1; }
+    body main .status {
+      width: 100%;
+      height: 125px; }
+      body main .status .banner {
+        overflow: auto;
+        position: relative;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5); }
+        body main .status .banner .slides {
+          width: 3000px;
+          height: 125px;
+          margin: 0;
+          padding: 0; }
+          body main .status .banner .slides li {
+            height: 125px;
+            width: 832px;
+            float: left;
+            text-align: center;
+            color: #fafafa;
+            padding-top: 20px;
+            padding-bottom: 30px;
+            padding-right: 10px;
+            padding-left: 10px; }
+            body main .status .banner .slides li a {
+              font-family: "Roboto", Helvetica, Arial, sans-serif;
+              color: #fafafa;
+              line-height: 1.75em; }
+              body main .status .banner .slides li a span {
+                font-family: "Moon", Helvetica, Arial, sans-serif;
+                font-size: 18px; }
+          body main .status .banner .slides li.advice {
+            background-color: #263942; }
+          body main .status .banner .slides li.positive {
+            background-color: #45b29d; }
+          body main .status .banner .slides li.negative {
+            background-color: #df5a49; }
+        body main .status .banner .dots {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 15px;
+          text-align: center; }
+          body main .status .banner .dots li {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 6px;
+            text-indent: -999em;
+            border: 2px solid #fff;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: .4;
+            -webkit-transition: background .5s, opacity .5s;
+            -moz-transition: background .5s, opacity .5s;
+            transition: background .5s, opacity .5s; }
+          body main .status .banner .dots li.active {
+            background: #fff;
+            opacity: 1; }
+    body main .measures {
+      width: 100%;
+      margin-bottom: 30px; }
+      body main .measures li {
+        background-color: #ffffff;
+        height: 375px;
+        margin-top: 20px;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5); }
+        body main .measures li h2 {
+          height: 10%;
+          font-family: "Moon", Helvetica, Arial, sans-serif;
+          font-weight: Bold;
+          letter-spacing: 1px;
+          color: #ffffff;
+          background-color: #263942;
+          width: 100%;
+          text-align: center;
+          padding-top: 10px;
+          padding-bottom: 10px; }
+        body main .measures li div {
+          width: 100%;
+          height: 50%; }
+          body main .measures li div .graph {
+            background-color: #fafafa;
+            height: 96%;
+            width: 96%;
+            margin: 2% 2% 2% 2%; }
+        body main .measures li div.container {
+          width: 100%;
+          height: 37.5%;
+          background-color: #e3e8e9; }
+          body main .measures li div.container div {
+            margin-top: 20px;
+            height: 80%;
+            width: 50%;
+            display: inline-block;
+            float: left; }
+            body main .measures li div.container div a {
+              font-family: "Moon", Helvetica, Arial, sans-serif;
+              color: #c43b73;
+              font-size: 12px;
+              font-weight: Bold; }
+          body main .measures li div.container div:first-child {
+            border-right: 1px solid #cad0d1; }
+      body main .measures .bp {
+        width: 49%;
+        display: inline-block;
+        float: left; }
+        body main .measures .bp .container .stats {
+          padding-left: 10%;
+          padding-right: 10%;
+          padding-top: 5%; }
+          body main .measures .bp .container .stats h4 {
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-size: 26px;
+            text-align: center;
+            float: left; }
+            body main .measures .bp .container .stats h4 span {
+              border-bottom: 2px solid #555555;
+              display: inline-block;
+              padding-bottom: 5px; }
+          body main .measures .bp .container .stats p {
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 300;
+            position: relative;
+            top: 15px;
+            left: 10px; }
+        body main .measures .bp .container .links {
+          padding: 5%; }
+          body main .measures .bp .container .links a {
+            line-height: 1.5em;
+            display: inline-block;
+            margin-bottom: 5%; }
+            body main .measures .bp .container .links a:hover {
+              border-bottom: 2px solid #c43b73; }
+      body main .measures .hr {
+        width: 49%;
+        margin-left: 2%;
+        display: inline-block; }
+        body main .measures .hr .container .stats {
+          padding-left: 12%;
+          padding-top: 7%; }
+          body main .measures .hr .container .stats h4 {
+            font-family: "Moon", Helvetica, Arial, sans-serif;
+            font-size: 20px; }
+            body main .measures .hr .container .stats h4 span {
+              font-family: "Roboto", Helvetica, Arial, sans-serif;
+              font-size: 48px;
+              font-weight: 300;
+              display: inline-block;
+              padding-right: 5px; }
+        body main .measures .hr .container .links {
+          padding: 10% 5% 5% 5%; }
+          body main .measures .hr .container .links a {
+            line-height: 1.5em; }
+            body main .measures .hr .container .links a:hover {
+              border-bottom: 2px solid #c43b73; }
+    body main .challenges {
+      width: 100%; }
+      body main .challenges li {
+        margin-top: 20px;
+        height: 200px;
+        background-color: #ffffff;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5); }
+        body main .challenges li h2 {
+          font-family: "Moon", Helvetica, Arial, sans-serif;
+          font-weight: Bold;
+          color: #fafafa;
+          letter-spacing: 1px;
+          background-color: #1d82aa;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          padding-left: 10px; }
+          body main .challenges li h2 span {
+            float: right;
+            display: inline-block;
+            padding-right: 10px; }
+        body main .challenges li .container {
+          width: 100%;
+          height: 75%; }
+          body main .challenges li .container div {
+            width: 50%;
+            display: inline-block;
+            float: left;
+            height: 50%;
+            margin-top: 5%;
+            padding-left: 3%;
+            padding-right: 3%; }
+            body main .challenges li .container div p {
+              line-height: 1.5em;
+              font-family: "Roboto", Helvetica, Arial, sans-serif;
+              color: #555555;
+              font-size: 14px;
+              padding-bottom: 5px; }
+            body main .challenges li .container div a {
+              font-family: "Moon", Helvetica, Arial, sans-serif;
+              color: #c43b73;
+              line-height: 2em;
+              font-size: 12px;
+              font-weight: Bold; }
+              body main .challenges li .container div a:hover {
+                border-bottom: 2px solid #c43b73; }
+          body main .challenges li .container div:first-child {
+            border-right: 1px solid #cad0d1; }
+      body main .challenges .step .container div h4 {
+        text-align: center;
+        font-family: "Roboto", Helvetica, Arial, sans-serif;
+        font-size: 60px;
+        font-weight: 300; }
+        body main .challenges .step .container div h4 span {
+          font-family: "Moon", Helvetica, Arial, sans-serif;
+          font-size: 20px;
+          display: block;
+          margin-top: 5px; }
+      body main .challenges .run .container .stats {
+        text-align: center; }
+        body main .challenges .run .container .stats b {
+          padding-right: 20px;
+          font-family: "Moon", Helvetica, Arial, sans-serif;
+          font-size: 18px; }
+        body main .challenges .run .container .stats h4 {
+          font-family: "Roboto", Helvetica, Arial, sans-serif;
+          font-size: 60px;
+          font-weight: 300; }
+          body main .challenges .run .container .stats h4 span {
+            font-size: 20px;
+            display: inline-block;
+            position: relative;
+            top: -27px; }
+      body main .challenges .in-progress h2 span {
+        color: #edbd5d; }
+      body main .challenges .completed h2 span {
+        color: #5eeacf; }
+      body main .challenges .not-started h2 span {
+        color: #d6769d;
+        cursor: pointer;
+        cursor: hand; }
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+    -ms-transform: translateY(-50px);
+    /* IE 9 */
+    -webkit-transform: translateY(-50px);
+    /* Chrome, Safari, Opera */
+    transform: translateY(-50px); }
+  to {
+    opacity: 1;
+    -ms-transform: translateY(0px);
+    /* IE 9 */
+    -webkit-transform: translateY(0px);
+    /* Chrome, Safari, Opera */
+    transform: translateY(0px); } }
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+    -ms-transform: translateY(-50px);
+    /* IE 9 */
+    -webkit-transform: translateY(-50px);
+    /* Chrome, Safari, Opera */
+    transform: translateY(-50px); }
+  to {
+    opacity: 1;
+    -ms-transform: translateY(0px);
+    /* IE 9 */
+    -webkit-transform: translateY(0px);
+    /* Chrome, Safari, Opera */
+    transform: translateY(0px); } }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    -ms-transform: translateY(-50px);
+    /* IE 9 */
+    -webkit-transform: translateY(-50px);
+    /* Chrome, Safari, Opera */
+    transform: translateY(-50px); }
+  to {
+    opacity: 1;
+    -ms-transform: translateY(0px);
+    /* IE 9 */
+    -webkit-transform: translateY(0px);
+    /* Chrome, Safari, Opera */
+    transform: translateY(0px); } }
+    body main .fade-in {
+      opacity: 0;
+      /* make things invisible upon start */
+      -ms-transform: translateY(-50px);
+      /* IE 9 */
+      -webkit-transform: translateY(-50px);
+      /* Chrome, Safari, Opera */
+      transform: translateY(-50px);
+      -webkit-animation: fadeIn ease-in 1;
+      /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+      -moz-animation: fadeIn ease-in 1;
+      animation: fadeIn ease-in 1;
+      -webkit-animation-fill-mode: forwards;
+      /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+      -moz-animation-fill-mode: forwards;
+      animation-fill-mode: forwards;
+      -webkit-animation-duration: 0.5s;
+      -moz-animation-duration: 0.5s;
+      animation-duration: 0.5s; }
+    body main .fade-in.one {
+      -webkit-animation-delay: 0s;
+      -moz-animation-delay: 0s;
+      animation-delay: 0s; }
+    body main .fade-in.two {
+      -webkit-animation-delay: 0.5s;
+      -moz-animation-delay: 0.5s;
+      animation-delay: 0.5s; }
+    body main .fade-in.three {
+      -webkit-animation-delay: 0.25s;
+      -moz-animation-delay: 0.25s;
+      animation-delay: 0.75s; }
+    body main .profile-header {
+      background-image: url(../img/profile_background.png);
+      width: 100%;
+      height: 300px;
+      position: relative; }
+      body main .profile-header header {
+        text-align: center;
+        margin: 0 auto; }
+        body main .profile-header header div {
+          display: block;
+          margin: 0 auto;
+          padding: 20px; }
+          body main .profile-header header div .image-overlay {
+            width: 125px;
+            height: 125px;
+            border-radius: 65px;
+            position: relative; }
+            body main .profile-header header div .image-overlay img {
+              width: 125px;
+              height: 125px;
+              border: 1px solid #fafafa;
+              border-radius: 65px;
+              padding: 5px;
+              padding-right: 3px;
+              padding-bottom: 3px;
+              position: absolute;
+              top: 0;
+              left: 0;
+              cursor: pointer;
+              cursor: hand; }
+              body main .profile-header header div .image-overlay img:hover {
+                opacity: 0.5; }
+            body main .profile-header header div .image-overlay p {
+              padding-top: 10px;
+              color: #fff;
+              font-family: "Moon", Helvetica, Arial, sans-serif;
+              font-size: 12px;
+              letter-spacing: 0.5; }
+        body main .profile-header header h1 {
+          width: 100%;
+          color: #fafafa;
+          font-weight: normal;
+          letter-spacing: 3px;
+          margin-bottom: 5px; }
+        body main .profile-header header p {
+          font-family: "Roboto", Helvetica, Arial, sans-serif;
+          color: #cad0d1;
+          letter-spacing: 1px;
+          font-weight: 300;
+          line-height: 1.5em;
+          font-size: 14px; }
+    body main .profile-body {
+      height: 300px;
+      margin-top: 20px; }
+      body main .profile-body .goals {
+        float: left;
+        width: 60%; }
+        body main .profile-body .goals h2 {
+          text-align: center;
+          font-family: "Moon", Helvetica, Arial, sans-serif;
+          color: #fafafa;
+          width: 95%;
+          padding: 10px;
+          background-color: #263942; }
+        body main .profile-body .goals ul {
+          width: 95%; }
+          body main .profile-body .goals ul li {
+            background-color: #e3e8e9;
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            padding-left: 20px;
+            padding-right: 20px; }
+            body main .profile-body .goals ul li:hover {
+              background-color: #cad0d1; }
+            body main .profile-body .goals ul li span {
+              display: inline-block;
+              float: right; }
+              body main .profile-body .goals ul li span .fa {
+                margin-left: 10px;
+                font-size: 20px;
+                cursor: pointer;
+                cursor: hand;
+                color: #263942; }
+          body main .profile-body .goals ul .add-goal {
+            background-color: #45b29d;
+            font-family: "Moon", Helvetica, Arial, sans-serif;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            color: #fafafa;
+            font-weight: Bold;
+            text-align: center;
+            cursor: pointer;
+            cursor: hand; }
+            body main .profile-body .goals ul .add-goal:hover {
+              background-color: #45b29d; }
+      body main .profile-body .related-links {
+        width: 40%;
+        float: left; }
+        body main .profile-body .related-links ul li {
+          background-color: #e3e8e9; }
+          body main .profile-body .related-links ul li a {
+            display: block;
+            height: 100%;
+            width: 100%;
+            padding: 20px;
+            color: #263942;
+            font-family: "Moon", Helvetica, Arial, sans-serif; }
+            body main .profile-body .related-links ul li a:hover {
+              background-color: #cad0d1; }
+            body main .profile-body .related-links ul li a .fa {
+              font-size: 20px;
+              float: right; }
+    body main .preferences {
+      width: 100%;
+      margin-top: 20px;
+      background-color: #e3e8e9;
+      clear: both; }
+      body main .preferences .first .heading {
+        width: 33.33%;
+        float: left;
+        text-align: center;
+        border-right: 1px solid #e3e8e9;
+        background-color: #334d5c;
+        padding: 15px;
+        font-family: "Moon", Helvetica, Arial, sans-serif;
+        color: #fafafa;
+        cursor: pointer;
+        cursor: hand; }
+        body main .preferences .first .heading:hover {
+          background-color: #263942; }
+      body main .preferences .first .heading:first-child {
+        background-color: #c43b73; }
+      body main .preferences .acc-second {
+        clear: both; }
+        body main .preferences .acc-second li ul {
+          padding-top: 30px;
+          padding-bottom: 30px;
+          height: 150px;
+          border-bottom: 1px solid #cad0d1; }
+          body main .preferences .acc-second li ul li {
+            width: 30%;
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            background-color: #e3e8e9;
+            float: left;
+            line-height: 1.5em;
+            text-align: center; }
+            body main .preferences .acc-second li ul li input {
+              outline: none; }
+            body main .preferences .acc-second li ul li h2 {
+              font-family: "Moon", Helvetica, Arial, sans-serif;
+              font-size: 24px; }
+            body main .preferences .acc-second li ul li span, body main .preferences .acc-second li ul li h4, body main .preferences .acc-second li ul li p {
+              font-family: "Roboto", Helvetica, Arial, sans-serif;
+              font-weight: 300; }
+            body main .preferences .acc-second li ul li span {
+              display: inline-block; }
+            body main .preferences .acc-second li ul li h4 {
+              font-size: 20px; }
+            body main .preferences .acc-second li ul li p {
+              font-size: 14px; }
+            body main .preferences .acc-second li ul li a {
+              display: inline-block;
+              font-family: "Moon", Helvetica, Arial, sans-serif;
+              color: #c43b73;
+              margin-right: 20px;
+              text-align: center; }
+          body main .preferences .acc-second li ul li:nth-child(2) {
+            width: 40%; }
+        body main .preferences .acc-second .acc-password span {
+          font-size: 24px;
+          font-weight: 700; }
+      body main .preferences .pref-notif {
+        display: none; }
+        body main .preferences .pref-notif .notif-first, body main .preferences .pref-notif .notif-second {
+          padding-top: 20px;
+          padding-bottom: 20px; }
+          body main .preferences .pref-notif .notif-first h2, body main .preferences .pref-notif .notif-second h2 {
+            margin-bottom: 10px;
+            margin-left: 5%;
+            font-family: "Moon", Helvetica, Arial, sans-serif;
+            font-size: 20px; }
+          body main .preferences .pref-notif .notif-first ul, body main .preferences .pref-notif .notif-second ul {
+            margin-left: 20%; }
+            body main .preferences .pref-notif .notif-first ul li, body main .preferences .pref-notif .notif-second ul li {
+              line-height: 1.5em;
+              font-family: "Roboto", Helvetica, Arial, sans-serif;
+              font-weight: 300;
+              margin-top: 10px;
+              margin-bottom: 10px; }
+              body main .preferences .pref-notif .notif-first ul li .bootstrap-switch, body main .preferences .pref-notif .notif-second ul li .bootstrap-switch {
+                margin-right: 20px; }
+      body main .preferences .pref-priv {
+        display: none;
+        text-align: center;
+        padding-bottom: 20px; }
+        body main .preferences .pref-priv h1 {
+          font-family: "Moon", Helvetica, Arial, sans-serif;
+          font-size: 20px;
+          margin-top: 20px; }
+        body main .preferences .pref-priv ul {
+          margin-left: 10%;
+          float: left; }
+          body main .preferences .pref-priv ul li:first-child {
+            font-family: "Moon", Helvetica, Arial, sans-serif;
+            font-size: 18px; }
+          body main .preferences .pref-priv ul li {
+            margin-top: 20px;
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-weight: 300; }
+            body main .preferences .pref-priv ul li span {
+              font-family: "Moon", Helvetica, Arial, sans-serif;
+              color: #c43b73; }
+        body main .preferences .pref-priv .priv-mobile {
+          display: none; }
+        body main .preferences .pref-priv .priv-edit {
+          float: none; }
+          body main .preferences .pref-priv .priv-edit li:first-child {
+            opacity: 0; }
+        body main .preferences .pref-priv a {
+          display: inline-block;
+          font-family: "Moon", Helvetica, Arial, sans-serif;
+          padding: 10px;
+          color: #c43b73;
+          font-weight: bold;
+          border: 3px solid #c43b73;
+          margin-top: 20px;
+          border-radius: 25px;
+          text-align: center; }
+          body main .preferences .pref-priv a:hover {
+            background-color: #c43b73;
+            color: #fafafa; }
+    body main .notifications-page {
+      margin-top: 20px; }
+      body main .notifications-page h2 {
+        font-size: 35px;
+        font-family: "Moon", Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        color: #263942;
+        margin-bottom: 10px; }
+      body main .notifications-page .notif-full h4 {
+        width: 100%;
+        padding: 15px;
+        background-color: #263942;
+        color: #fafafa;
+        font-family: "Moon", Helvetica, Arial, sans-serif;
+        font-weight: bold;
+        margin-top: 20px; }
+      body main .notifications-page .notif-full ul li {
+        line-height: 1.5em;
+        margin-top: 5px;
+        padding: 20px;
+        font-family: "Roboto", Helvetica, Arial, sans-serif;
+        font-weight: 300;
+        background-color: #e3e8e9; }
+        body main .notifications-page .notif-full ul li:hover {
+          background-color: #cad0d1; }
+        body main .notifications-page .notif-full ul li a {
+          display: inline-block;
+          margin-left: 10px;
+          color: #c43b73;
+          font-weight: 500; }
+    body main .challenge-full h1 {
+      margin-top: 20px;
+      font-family: "Moon", Helvetica, Arial, sans-serif;
+      color: #263942;
+      font-size: 35px;
+      font-weight: bold; }
+    body main .challenge-full h2 {
+      margin-top: 20px;
+      font-family: "Moon", Helvetica, Arial, sans-serif;
+      color: #fafafa;
+      font-weight: bold;
+      padding: 20px;
+      width: 100%;
+      background-color: #263942;
+      cursor: pointer;
+      cursor: hand; }
+    body main .challenge-full div {
+      margin-top: 10px; }
+      body main .challenge-full div ul {
+        margin-top: 10px; }
+        body main .challenge-full div ul li {
+          width: 100%;
+          color: #555555;
+          font-family: "Roboto", Helvetica, Arial, sans-serif;
+          font-weight: 300; }
+          body main .challenge-full div ul li h4 {
+            background-color: #e3e8e9;
+            font-weight: 700;
+            padding: 20px;
+            cursor: pointer;
+            cursor: hand; }
+            body main .challenge-full div ul li h4:hover {
+              background-color: #cad0d1; }
+            body main .challenge-full div ul li h4 span {
+              font-weight: 500;
+              float: right; }
+            body main .challenge-full div ul li h4 .in-progress {
+              color: #EDBD5D; }
+            body main .challenge-full div ul li h4 .completed {
+              color: #45b29d; }
+            body main .challenge-full div ul li h4 .not-started {
+              color: #d6769d; }
+          body main .challenge-full div ul li div {
+            display: none; }
+            body main .challenge-full div ul li div p:first-child {
+              float: left; }
+            body main .challenge-full div ul li div p {
+              line-height: 1.25em;
+              padding: 10px 20px 20px 20px; }
+            body main .challenge-full div ul li div .date span {
+              font-size: 14px;
+              margin-right: 10px; }
+            body main .challenge-full div ul li div .desc {
+              margin-left: 35%; }
+      body main .challenge-full div .exercise li {
+        display: block; }
+      body main .challenge-full div .diet {
+        display: none; }
+    body main .signout-page {
+      width: 100%;
+      background-color: #ffffff;
+      text-align: center; }
+      body main .signout-page h1 {
+        font-family: "Moon", Helvetica, Arial, sans-serif;
+        font-size: 35px;
+        font-weight: bold;
+        padding-bottom: 20px; }
   body footer {
     margin-left: 15%;
     font-family: "Moon", Helvetica, Arial, sans-serif;
@@ -651,8 +1388,8 @@ body {
     letter-spacing: 1px;
     background-color: #2e3751;
     width: 80%;
-    height: 60px;
-    padding: 20px 30px 20px 30px; }
+    height: 70px;
+    padding: 30px; }
     body footer p {
       display: inline-block;
       float: left; }
@@ -664,6 +1401,11 @@ body {
         float: left; }
         body footer ul li a {
           color: #ffffff; }
+
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both; }
 
 .axis path, .axis line, .domain {
   fill: none;
@@ -677,6 +1419,7 @@ text {
   font-size: 16px; }
 
 .d3-tip {
+  text-align: center;
   font-family: 'Roboto';
   font-size: 16px;
   line-height: 1;
@@ -707,8 +1450,11 @@ text {
 circle:hover {
   fill: #334D5C; }
 
-rect:hover {
+#chart rect:hover, #tryglyceride rect:hover {
   fill: #334D5C; }
+
+#daily-bp rect:nth-child(even) {
+  fill: #45B29D; }
 
 .path-0, .path-2 {
   stroke: #C43B73; }
@@ -722,6 +1468,114 @@ rect:hover {
 .diastolic {
   color: #45B29D; }
 
+.month-picker {
+  display: inline-block;
+  position: relative;
+  border: 1px solid #999999;
+  border-left: none;
+  cursor: pointer; }
+
+.month-picker i {
+  padding: 7px 10px 7px 10px; }
+
+.month-picker:hover {
+  background-color: #999; }
+
+.cal-popup {
+  position: absolute;
+  display: none;
+  z-index: 10;
+  right: 0;
+  top: 40px;
+  font-family: 'Roboto';
+  font-size: 32px;
+  color: #fff;
+  width: 320px;
+  text-align: center;
+  background-color: #263942;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5); }
+
+.cal-popup span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 50px;
+  height: 50px; }
+
+.cal-popup button {
+  font-family: 'Roboto';
+  font-size: 22px;
+  color: #fff;
+  text-transform: uppercase;
+  width: 320px;
+  height: 50px;
+  background-color: #45b29d;
+  border: none;
+  cursor: pointer; }
+
+.calendar {
+  width: 320px;
+  height: 240px;
+  border: 2px solid #e3e8e9;
+  background-color: #e3e8e9; }
+
+.month {
+  font-family: 'Roboto';
+  font-size: 22px;
+  color: #263942;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 80px;
+  width: 25%;
+  height: 33.33%;
+  background-color: #fff;
+  border: 2px solid #e3e8e9;
+  float: left; }
+
+.month:hover {
+  background-color: #e3e8e9;
+  cursor: pointer; }
+
+.arrowright {
+  border-left: 15px solid #fff; }
+
+.arrowleft {
+  border-right: 15px solid #fff; }
+
+.arrow {
+  display: inline-block;
+  margin: 0 30px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; }
+
+.arrowdown {
+  display: none;
+  border-bottom: none;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 8px solid #263869; }
+
+.arrowdown:hover {
+  cursor: pointer; }
+
+.arrowleft:hover {
+  border-right: 15px solid #c43b73;
+  cursor: pointer; }
+
+.arrowright:hover {
+  border-left: 15px solid #c43b73;
+  cursor: pointer; }
+
+.active-month {
+  background-color: #263942;
+  color: #fff; }
+
+.active-month:hover {
+  background-color: #263942; }
+
 @media screen and (max-width: 1200px) {
   body .notif {
     left: 44%; }
@@ -734,8 +1588,8 @@ rect:hover {
 @media screen and (max-width: 1100px) {
   body .notif {
     left: 43%; }
-  body .rightbar {
-    left: 84%; } }
+  body .reminder-notif {
+    left: 40%; } }
 @media screen and (max-width: 1024px) {
   body .notif {
     left: 41%; }
@@ -758,18 +1612,23 @@ rect:hover {
     body .topbar ul .reminder_header .reminder-toggle {
       display: block; }
   body .leftbar {
+    z-index: 5;
     width: 200px;
     display: none; }
   body .rightbar {
+    z-index: 5;
     width: 200px;
     display: none;
     left: 80%; }
   body main {
-    width: 90%;
-    left: 5%; }
+    width: 95%;
+    left: 2.5%; }
   body footer {
     width: 100%;
     margin-left: 0; } }
+@media screen and (max-width: 941px) {
+  body .reminder-notif {
+    left: 39%; } }
 @media screen and (max-width: 921px) {
   body .reminder-popup, body .edit-reminder {
     margin-left: 32%; }
@@ -777,11 +1636,27 @@ rect:hover {
     left: 39%; }
   body .rightbar {
     left: 78%; } }
+@media screen and (max-width: 841px) {
+  body .reminder-notif {
+    left: 38%; } }
 @media screen and (max-width: 820px) {
   body .notif {
     left: 36%; }
   body .rightbar {
     left: 75%; } }
+@media screen and (max-width: 800px) {
+  body main .profile-body {
+    height: 500px; }
+    body main .profile-body .goals {
+      width: 100%; }
+      body main .profile-body .goals h2 {
+        padding: 15px;
+        width: 100%; }
+      body main .profile-body .goals ul {
+        width: 100%; }
+    body main .profile-body .related-links {
+      width: 100%;
+      margin-top: 20px; } }
 @media screen and (max-width: 768px) {
   body .notif {
     display: none; }
@@ -806,29 +1681,143 @@ rect:hover {
   body .leftbar .user {
     color: #8591a5;
     padding: 20px;
-    font-family: "Roboto", Helvetica, Arial, sans-serif; } }
+    font-family: "Roboto", Helvetica, Arial, sans-serif; }
+  body main .measures li h2 {
+    font-size: 30px; }
+  body main .measures li div.container {
+    height: 37.3%; }
+    body main .measures li div.container div a {
+      font-size: 16px; }
+  body main .measures .bp {
+    width: 100%;
+    height: 500px; }
+    body main .measures .bp .container .stats h4 {
+      font-size: 48px; }
+    body main .measures .bp .container .stats p {
+      font-size: 27px;
+      top: 33px; }
+  body main .measures .hr {
+    width: 100%;
+    margin-left: 0;
+    height: 500px; }
+    body main .measures .hr .container .stats h4 {
+      font-size: 27px; }
+      body main .measures .hr .container .stats h4 span {
+        font-size: 72px; }
+  body main .preferences .acc-second li ul li p {
+    display: none; } }
 @media screen and (max-width: 731px) {
+  .month-picker i {
+    display: none; }
+
+  div.month-picker {
+    border: none; }
+
+  .cal-popup {
+    top: 20px; }
+
   body main header .date-picker {
     width: 100%;
     margin-left: 0;
     margin-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-radius: 5px; }
-    body main header .date-picker h2 {
-      margin-left: 40%; }
-      body main header .date-picker h2 .fa {
-        font-size: 24px; }
-      body main header .date-picker h2 .fa-caret-right {
+    body main header .date-picker div {
+      margin: 0 auto;
+      width: 380px;
+      height: 100%;
+      text-align: center; }
+      body main header .date-picker div .arrow {
+        width: 0;
+        height: 0;
+        display: inline-block; }
+      body main header .date-picker div .fa {
+        /*font-size: 24px;
+        left: 0;
+        top: 0;*/
+        display: none; }
+      body main header .date-picker div h2 {
+        margin: 0 auto;
+        padding: 5px 20px 5px 20px; }
+      body main header .date-picker div .fa-caret-right {
         position: relative;
-        left: 10px;
-        top: 2px; }
-      body main header .date-picker h2 .fa-caret-left {
+        top: 1px; }
+      body main header .date-picker div .fa-caret-left {
         position: relative;
-        left: -10px;
-        top: 2px; } }
+        top: 1px; } }
 @media screen and (max-width: 721px) {
   body .rightbar {
     left: 72%; } }
+@media screen and (max-width: 690px) {
+  body main .greeting .date-picker {
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    cursor: pointer;
+    cursor: hand; }
+    body main .greeting .date-picker h4 {
+      float: left;
+      font-size: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-right: 10px;
+      padding-left: 40%; }
+    body main .greeting .date-picker .arrow-right, body main .greeting .date-picker .arrow-left {
+      display: none; }
+    body main .greeting .date-picker .arrow-mobile {
+      cursor: pointer;
+      cursor: hand;
+      display: block;
+      position: relative;
+      font-size: 24px;
+      padding-top: 7px; }
+  body main .greeting .date-icon {
+    display: none; }
+  body main .greeting .date-popup-mobile {
+    width: 100%;
+    top: 130px;
+    left: 0;
+    height: 215px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5); }
+    body main .greeting .date-popup-mobile input {
+      margin-top: 23px;
+      margin-left: 10%;
+      height: 45px;
+      font-size: 18px; }
+    body main .greeting .date-popup-mobile a {
+      margin-top: 43px;
+      padding: 20px 20px 30px 20px; }
+    body main .greeting .date-popup-mobile .fa {
+      margin-left: 93%;
+      cursor: pointer;
+      cursor: hand; }
+  body main .status {
+    margin-bottom: 80px;
+    height: 150px; }
+    body main .status .banner {
+      height: 150px; }
+      body main .status .banner .slides {
+        height: 150px; }
+        body main .status .banner .slides li {
+          height: 150px; }
+  body main .measures .bp {
+    margin-top: 0px;
+    margin-bottom: 10px; }
+  body main .preferences .pref-priv ul {
+    margin: 0;
+    display: none;
+    margin-top: 20px; }
+  body main .preferences .pref-priv .priv-mobile {
+    display: block;
+    width: 100%; } }
 @media screen and (max-width: 650px) {
+  body .reminder-notif {
+    left: 34%; }
   body main .cards .bp .container .stats p {
     top: 8px;
     left: 15px; }
@@ -849,25 +1838,24 @@ rect:hover {
       padding-left: 32%; }
       body .leftbar .user p {
         top: -10px; }
-    body .leftbar ul li {
-      padding-left: 35%; }
-      body .leftbar ul li:hover {
-        border: none; }
-      body .leftbar ul li a .fa {
-        padding-right: 10px; }
-    body .leftbar ul .active {
-      border: none;
-      background-color: #c43b73; }
-      body .leftbar ul .active a {
-        color: #fafafa; }
+    body .leftbar ul {
+      text-align: center; }
+      body .leftbar ul li {
+        padding-left: 0; }
+        body .leftbar ul li:hover {
+          border: none; }
+        body .leftbar ul li a {
+          padding-left: 0; }
+          body .leftbar ul li a .fa {
+            display: none; }
+      body .leftbar ul .active {
+        border: none;
+        background-color: #c43b73; }
+        body .leftbar ul .active a {
+          color: #fafafa; }
   body .rightbar {
     width: 100%;
     left: 0; }
-    body .rightbar .add-reminder {
-      left: 0;
-      padding-top: 0px; }
-      body .rightbar .add-reminder .fa {
-        font-size: 60px; }
     body .rightbar ul li p {
       width: 50%;
       float: left;
@@ -876,15 +1864,65 @@ rect:hover {
       width: 40%;
       height: 100%;
       margin-left: 10%;
-      display: inline-block; } }
+      display: inline-block; }
+  body main .measures .bp {
+    height: 400px; }
+    body main .measures .bp h2 {
+      padding-bottom: 35px; }
+    body main .measures .bp .container .stats {
+      padding-top: 3%; }
+      body main .measures .bp .container .stats h4 {
+        font-size: 36px; }
+      body main .measures .bp .container .stats p {
+        font-size: 17px; }
+  body main .measures .hr {
+    height: 400px; }
+    body main .measures .hr h2 {
+      padding-bottom: 35px; }
+    body main .measures .hr .container .stats {
+      padding-top: 5%; }
+      body main .measures .hr .container .stats h4 {
+        font-size: 24px; }
+        body main .measures .hr .container .stats h4 span {
+          font-size: 48px; } }
 @media screen and (max-width: 600px) {
   body footer ul {
     margin-left: 50%; } }
+@media screen and (max-width: 600px) {
+  body main .measures .bp .container .links a:hover {
+    border: none; }
+  body main .measures .hr .container .links a:hover {
+    border: none; }
+  body main .challenges li {
+    height: 250px; }
+    body main .challenges li h2 span {
+      display: none; }
+    body main .challenges li .container div {
+      margin-top: 10%; }
+      body main .challenges li .container div a {
+        line-height: 1.5em; }
+        body main .challenges li .container div a:hover {
+          border: 0; }
+  body main .challenges .in-progress h2 {
+    background-color: #edbd5d; }
+  body main .challenges .completed h2 {
+    background-color: #37d397; }
+  body main .challenges .not-started h2 {
+    background-color: #c43b73; }
+  body main .preferences .pref-acc .acc-second li ul {
+    padding-top: 10px; }
+    body main .preferences .pref-acc .acc-second li ul li {
+      text-align: center;
+      float: none;
+      width: 100%;
+      margin-top: 10px; }
+      body main .preferences .pref-acc .acc-second li ul li span, body main .preferences .pref-acc .acc-second li ul li a {
+        margin: 0; } }
 @media screen and (max-width: 515px) {
+  body .reminder-notif {
+    left: 30%; }
   body .leftbar .user {
     padding-left: 25%; }
-  body .leftbar ul li {
-    padding-left: 30%; }
   body footer {
     padding-top: 15px; }
     body footer p {
@@ -894,12 +1932,20 @@ rect:hover {
     body footer ul {
       margin-left: 25%; } }
 @media screen and (max-width: 461px) {
+  body .reminder-notif {
+    left: 25%; }
   body .reminder-popup, body .edit-reminder {
     margin-left: 14%; }
   body main header h1 {
     font-size: 29px; }
   body main header .date-picker h2 {
     margin-left: 35%; }
+  body main .greeting h1 {
+    font-size: 30px; }
+  body main .preferences .first .heading {
+    width: 30%; }
+  body main .preferences .first .heading:nth-child(2) {
+    width: 40%; }
   body footer p {
     margin-left: 20%; }
   body footer ul {

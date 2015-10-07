@@ -1,0 +1,15 @@
+<ul ng-controller="ChallengeController">
+	<li ng-repeat="challenge in challenges | filter : { featured : 'true'} : true" class="{{challenge.exercise}} {{challenge.type}}">
+		<h2>{{challenge.title}} <span>{{challenge.progress}}</span></h2>
+		<div class="container">
+			<div class="caption">
+				<p>{{challenge.caption}}</p>
+				<a href="{{challenge.href}}">{{challenge.link}}</a>
+			</div>
+			<div class="stats">
+				<b>{{challenge.statheader}}</b>
+				<h4>{{challenge.stats}}<span>{{challenge.statcaption}}</span></h4>
+			</div>
+		</div>
+	</li>
+</ul>

@@ -1,0 +1,22 @@
+<div class="notif-full" ng-controller="NotificationController">
+		<h4>Today, August 7, 2015</h4>
+		<ul class="today">
+			<li ng-repeat="notification in notifications | filter : { datefilter: 'Today'} : true">
+				{{ notification.message }} <a href="{{notification.link}}">{{ notification.cta }}</a>
+			</li>
+		</ul>
+		<h4>Yesterday, August 6, 2015</h4>
+		<ul class="yesterday">
+			<li ng-repeat="notification in notifications | filter: { datefilter: 
+			'Yesterday'} : true">
+				{{ notification.message }} <a href="{{notification.link}}">{{notification.cta}}</a>
+			</li>
+		</ul>
+		<h4>Wednesday, August 5, 2015</h4>
+		<ul class="nextday">
+			<li ng-repeat="notification in notifications | filter: { datefilter: 'Aug5'} : true">
+				{{ notification.message }} <a href="{{notification.link}}">
+				{{notification.cta}}</a>
+			</li>
+		</ul>
+</div>

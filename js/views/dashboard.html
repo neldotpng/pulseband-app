@@ -1,0 +1,100 @@
+
+	<section class="greeting">
+			<h1>Your Daily Dashboard</h1>
+			<div class="date-picker">
+				<div class="arrow-left"><i class="fa fa-caret-left"></i></div>
+				<h4>Jul 21</h4>
+				<div class="arrow-right"><i class="fa fa-caret-right"></i>
+				</div>
+				<div class="arrow-mobile"><i class="fa fa-caret-down"></i></i>
+				</div> 
+
+			</div>
+			
+			<div class="date-icon">
+				
+				<i class="fa fa-calendar"></i>
+
+				<div class="full date-popup"><i class="fa fa-times"></i>
+				<h2>Pick a Date</h2><input class="date" type="date"></input><a>Go</a></div>
+			</div>
+
+			<div class="date-popup-mobile date-popup"><i class="fa fa-times"></i>
+			<h2>Pick a Date</h2><input class="date" type="date"></input><a>Go</a></div>
+			
+
+		</section>
+
+		<section class="status fade-in one">
+			<div class="banner">
+				<ul class="slides">
+					<li class="positive">
+						<a href="">
+							<span>Great News!</span><br>
+							Your blood pressure has steadily decreased this month. See more >
+						</a>
+					</li>
+
+					<li class="negative">
+						<a href="">
+							<span>Are you okay?</span><br>
+							Your heart rate has spiked significantly in the past hour. See more >
+						</a>
+					</li>
+
+					<li class="advice">
+						<a href="">
+							<span>Lowering Your Cholesterol</span><br>
+							Check out three ways to do it >
+						</a>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+
+		<section class="measures fade-in two">
+			<ul>
+				<li class="bp">
+					<h2>blood pressure</h2>
+					<div>
+						<div class="graph">
+							<svg id="daily-bp"></svg>
+						</div>
+					</div>
+					
+					<div class="container">
+						<div class="stats"><h4><span>120</span><br>80</h4>
+						<p>mmHg</p></div>
+						<div class="links"><a href="">Update reading</a><br>
+							<a id="bplink" href="#healthdata#bp">View in-depth analysis</a>
+						</div>
+					</div>
+				</li>
+				<li class="hr">
+					<h2>heart rate</h2>
+					<div>
+						<div class="graph">
+							<svg id="daily-hr"></svg>
+						</div>
+					</div>
+					<div class="container">
+						<div class="stats"><h4><span>82</span>bpm</h4>
+						</div>
+						<div class="links">
+							<a id="hrlink" href="/#/healthdata#hr">View in-depth analysis</a>
+						</div>
+					</div>
+					
+				</li>
+			</ul>
+
+		</section>
+
+		<section class="challenges fade-in three">
+			<challenges></challenges>
+		</section>
+
+<script src="js/main/dashboard/dashboard.js"></script>
+<script src="js/main/dashboard/slider.js"></script>
+<script src="js/main/dashboard/daily.js"></script>

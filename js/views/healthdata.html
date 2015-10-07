@@ -1,14 +1,43 @@
 <header>
-			<h1>Your Health Summary</h1>
-			<div class="date-picker">
-				
-				<i class="fa fa-caret-left"></i><h2>Jul</h2><i class="fa fa-caret-right"></i>
-				
+	<h1>Your Health Summary</h1>
+	<div id="bp" class="date-picker">
+		<div>
+			<i class="fa fa-caret-left"></i>
+			<h2><span id="month">Jul</span> <span id="year">2015</span></h2>
+			<div class="arrow arrowdown"></div>
+			<i class="fa fa-caret-right"></i>
+		</div>
+	</div><div class="month-picker">
+		<i class="fa fa-calendar"></i>
+		<div class='cal-popup'>
+			<div class='year-picker'>
+				<div class='arrow arrowleft'></div>
+				<span id='yearpick'>2015</span>
+				<div class='arrow arrowright'></div>
 			</div>
-		</header>
+
+			<div class="calendar">
+				<div class='month' id='jan'>Jan</div>
+				<div class='month' id='feb'>Feb</div>
+				<div class='month' id='mar'>Mar</div>
+				<div class='month' id='apr'>Apr</div>
+				<div class='month' id='may'>May</div>
+				<div class='month' id='jun'>Jun</div>
+				<div class='month' id='jul'>Jul</div>
+				<div class='month' id='aug'>Aug</div>
+				<div class='month' id='sep'>Sep</div>
+				<div class='month' id='oct'>Oct</div>
+				<div class='month' id='nov'>Nov</div>
+				<div class='month' id='dec'>Dec</div>
+			</div>
+
+			<button>Go</button>
+		</div>
+	</div>
+</header>
 		
 		<section class="cards">
-			<li class="bp">
+			<li class="bp fade-in one">
 				<h2>Blood Pressure</h2>
 				<div>
 					<div class="graph">
@@ -18,13 +47,13 @@
 				<div class="container">
 					<div class="stats"><h4><span>120</span><br>80</h4><p>mmHg</p></div>
 					<div class="description"><p>Your overall blood pressure trend is looking good for this month!</p>
-					<a href="">View another month ></a>
-					<p>Tips: Try and exercise for at least 30 minutes, once a week.</p>
+					<a href="" class="view-month">View another month ></a>
+					<p id="hr">Tips: Try and exercise for at least 30 minutes, once a week.</p>
 					<a href="">View more tips ></a>
 				</div>
 				</div>
 			</li>
-			<li class="hr">
+			<li class="hr fade-in two">
 				<h2>Heart Rate</h2>
 				<div>
 					<div class="graph">
@@ -34,12 +63,12 @@
 				<div class="container">
 					<div class="stats"><h4><span>82</span>bpm</h4></div>
 					<div class="description"><p>Your heart rate spiked between the 12th and the 24th of this month.</p>
-					<a href="">View another month ></a>
+					<a href="" class="view-month">View another month ></a>
 					<p>Tips: A healthy and balanced diet can help lower blood pressure and stablize heart rate.</p>
 					<a href="">View More tips ></a></div>
 				</div>
 			</li>
-			<li class="bloodwork">
+			<li class="bloodwork fade-in three">
 				<h2>Blood Work Data</h2>
 				
 				<div class="container">
@@ -70,3 +99,5 @@
 
 			</li>
 		</section>
+<script src="js/main/healthdata/healthdata.js"></script>
+<script src="js/main/healthdata/bphr.js"></script>

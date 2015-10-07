@@ -1,0 +1,22 @@
+<div ng-controller="ChallengeController">
+	<h2 class="exercise-title">Exercise Challenges</h2>
+	<ul class="exercise">
+		<li ng-repeat="challenge in challenges | filter : { category : 'exercise'} : true">
+			<h4>{{challenge.name}} <span class="{{challenge.type}}">{{challenge.progress}}</span></h4>
+			<div>
+				<p class="date"><span>Date completed: </span>{{challenge.date}}</p>
+				<p class="desc">{{challenge.status}}</p>
+			</div>
+		</li>
+	</ul>
+	<h2 class="diet-title">Diet Challenges</h2>
+	<ul class="diet">
+		<li ng-repeat="challenge in challenges | filter : { category : 'diet'} : true">
+			<h4>{{challenge.name}} <span class="{{challenge.type}}">{{challenge.progress}}</span></h4>
+			<div>
+				<p class="date"><span>Date completed: </span>{{challenge.date}}</p>
+				<p class="desc">{{challenge.status}}</p>
+			</div>
+		</li>
+	</ul>
+</div>

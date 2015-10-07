@@ -1,0 +1,10 @@
+<ul class="appointments apt" ng-controller="AppointmentController">
+			
+	<li ng-repeat="appointment in appointments">
+		<p><span><span id="apt-date">{{ appointment.date }}</span>, <span id="apt-time">{{ appointment.time }}</span> -</span>
+		<span id="apt-title">{{ appointment.title }}</span> at <span id="apt-loc">{{ appointment.location }}</span></p>
+
+		<div class="options"><i class="fa fa-pencil-square-o"></i><i class="fa fa-check-circle"></i></div>
+	</li>
+	
+</ul>

@@ -1,6 +1,4 @@
-app.controller('MainController', ['$scope', function($scope) {
-
-	
+app.controller('MainController', ['$scope', '$compile', function($scope, $compile) {
 
 }]);
 

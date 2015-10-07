@@ -2,42 +2,46 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Pulseband: Your Health Data</title>
+
+	<title>Pulseband</title>
+
 	<link rel="stylesheet" href="css/reset.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	
 	<link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,400italic,500italic,700' rel='stylesheet' type='text/css'>
-
+	<link rel="stylesheet" href="css/main.css">	
+	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<link rel="stylesheet" href="css/main.css">	
-		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+	<script src="http://unslider.com/unslider.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-route.min.js"></script>
+	<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-switch.css" rel="stylesheet">
+
 </head>
 <body ng-app="PulsebandApp">
 
 	<div class="overlay fixed"></div>
 	
-
 	<div class="edit-reminder fixed">
 		<h2>Edit reminder <i class="fa fa-times"></i></h2>
-		<h3>Title <span><i class="fa fa-pencil-square-o edit-title"></i></span></h3>
-		<p class="title">No title specified</p>
-		<input class="input-title" type="text" placeholder="New title">
-		<h3>Location <span><i class="fa fa-pencil-square-o edit-location"></i></span></h3>
-		<p class="location">No location specified</p>
-		<input class="input-location" type="text" placeholder="New location">
-		<h3>Date <span><i class="fa fa-pencil-square-o edit-date"></i></span></h3>
-		<p class="date">No date specified</p>
-		<input class="input-date" type="date">
-		<h3>Time <span><i class="fa fa-pencil-square-o edit-time"></i></span></h3>
-		<p class="time">No time specified</p>
-		<input class="input-time" type="time">
-		<a class="delete" href="#">Delete</a><a class="confirm" href="#">Confirm</a>
+		<form>
+			<h3>Title</h3>
+			<input class="input-title" type="text" placeholder="New title" required>
+			<h3>Location</h3>
+			<input class="input-location" type="text" placeholder="New location" required>
+			<h3>Date</h3>
+			<input class="input-date" type="date" value="" required></input>
+			<h3>Time</h3>
+			<input class="input-time" type="time" value="12:00" required></input>
+			<a class="delete">Delete</a><input type="submit" class="confirm" value="Done"></input>
+		</form>
 	</div>
 
 	<div class="reminder-popup fixed">
-
 		<h2>Add Reminder <i class="fa fa-times"></i></h2>
 		<ul class="tabs">
     		<li class="task">
@@ -47,7 +51,6 @@
 		        	<h3>Add Task</h3>
 		        	<form id="task-form">
 				         <input class="title" type="text" placeholder="Title of Reminder" required></input><br>
-						<input class="location" type="text" placeholder="Location" required></input> 
 						<input class="date" type="date" placeholder="Date mm/dd/yyyy" required></input>
 						<input class="time" type="time" value="12:00" required></input>
 					
@@ -78,23 +81,12 @@
    				 
    			</li>
    		</ul>
-		
 	</div>
 
-	<div class="notif fixed">
-		<i class="fa fa-caret-up"></i>
-		<h2>Notifications</h2>
-		<ul>
-			<li>Dr. Smith has updated your bloodwork. <a href="#">See more</a></li>
-			<li>You have not updated your blood pressure in the past few days. <a href="#">Update now</a></li>
-			<li>You just received a new challenge! <a href="#">See more</a></li>
-			<li class="seeall">See all</li>
-		</ul>
-	</div>
+	<notifications></notifications>
 
 	<div class="reminder-notif fixed reminder-added">
 		<h1>Reminder added!</h1>
-
 	</div>
 
 	<div class="reminder-notif fixed reminder-edited">
@@ -104,16 +96,15 @@
 	<div class="reminder-notif fixed reminder-deleted">
 		<h1>Reminder deleted!</h1>
 	</div>
-		
 
 	<nav class="topbar fixed">
 		<div class="pulseband_logo">
 			<img src="img/pulseband_logo.png" alt="">
-			<div class="menu_div"><a id="menu-toggle" href="#"><span class="before"></span><span class="middle"></span><span class="after"></span></a></div>
+			<div class="menu_div"><a id="menu-toggle"><span class="before"></span><span class="middle"></span><span class="after"></span></a></div>
 		</div>
 		<h1><img class="inner_logo"src="img/pulseband_logo.png" alt="">Pulseband</h1>
 		<ul>
-			<li class="notification"><i class="fa fa-bell"></i><div></div>
+			<li class="notification"><i class="fa fa-bell"></i><div class="reddot"><h2></h2></div>
 			</li>
 			<li class="user">
 				<img src="img/user_icon.png" alt=""><p>Welcome, Eric.</p>
@@ -125,71 +116,32 @@
 	<nav class="leftbar fixed">
 		<div class="user mobile"><img src="img/user_icon.png" alt=""><p>Welcome, Eric.</p></div>
 		<ul>
-			<li><a href="#"><i class="fa fa-user"></i>Profile</a></li>
-			<li class="active"><a href="#"><i class="fa fa-heartbeat"></i>Dashboard</a></li>
-			<li><a href="/:id"><i class="fa fa-bar-chart"></i>Health Data</a></li>
-			<li><a href="#"><i class="fa fa-check-circle"></i>Challenges</a></li>
-			<li><a href="#"><i class="fa fa-cogs"></i>Preferences</a></li>
-			<li class="mobile"><a href="#"><i class="fa fa-bell"></i>Notifications</a></li>
-			<li class="signout"><a href="#">Sign out</a></li>
+			<li><a href="#notifications" id="notifications"><i class="fa fa-bell"></i>Notifications</a></li>
+			<li><a href="#profile" id="profile"><i class="fa fa-user"></i>Profile</a></li>
+			<li><a href="/#/" id="dashboard"><i class="fa fa-heartbeat"></i>Dashboard</a></li>
+			<li><a href="#healthdata" id="healthdata"><i class="fa fa-bar-chart"></i>Health Data</a></li>
+			<li><a href="#challenges" id="challenges"><i class="fa fa-check-circle"></i>Challenges</a></li>
+			<li><a href="#preferences" id="preferences"><i class="fa fa-cogs"></i>Preferences</a></li>
+			
+			<li class="signout"><a href="#signout">Sign out</a></li>
 
 		</ul>
 	</nav>
 
 	<aside class="rightbar fixed">
-		<h2>Tasks</h2>
-		<ul class="reminders task">
-			<li><p><span>August 24, 8:00 AM -</span><br>
-				Take multivitamin</p>
+		<h2>Tasks <i id="add-task" class="add-reminder fa fa-plus-circle"></i></h2>
+		<tasks></tasks>
 
-				<div class="options"><i class="fa fa-pencil-square-o"></i><i class="fa fa-check-circle"></i></div>
-			</li>
-			<li><p><span>August 25, 7:00 AM -</span><br>
-				Take medication at Home</p>
-
-				<div class="options"><i class="fa fa-pencil-square-o"></i><i class="fa fa-check-circle"></i></div>
-			</li>
-			<li><p><span>August 25, 12:00 PM -</span><br>
-				Measure blood pressure</p>
-
-				<div class="options"><i class="fa fa-pencil-square-o"></i><i class="fa fa-check-circle"></i></div>
-			</li>
-			<li><p><span>August 25, 10:00 AM -</span><br>
-				Call doctor</p>
-
-				<div class="options"><i class="fa fa-pencil-square-o"></i><i class="fa fa-check-circle"></i></div>
-			</li>
-			
-		</ul>
-		<h2>Appointments</h2>
-		<ul class="appointments apt">
-			
-			<li><p><span>August 25, 10:00 AM -</span><br>
-				Doctor's appointment at General hospital</p>
-
-				<div class="options"><i class="fa fa-pencil-square-o"></i><i class="fa fa-check-circle"></i></div>
-			</li>
-			<li><p><span>August 26, 2015, 12:00 PM -</span><br>Physical at Huntington Hospital</p>
-
-				<div class="options"><i class="fa fa-pencil-square-o"></i><i class="fa fa-check-circle"></i></div>
-			</li>
-			<li><p><span>August 26, 2015, 12:00 PM -</span><br>Physical at Huntington Hospital</p>
-
-				<div class="options"><i class="fa fa-pencil-square-o"></i><i class="fa fa-check-circle"></i></div>
-			</li>
-			
-		</ul>
-
-		<a class="add-reminder" href="#"><i class="fa fa-plus-circle"></i></a>
+		<h2>Appointments <i id="add-apt" class="add-reminder fa fa-plus-circle"></i></h2>
+		<appointments></appointments>
 	</aside>
 
 
 
 	<main ng-controller="MainController"> 
-		
-		<health-data></health-data>
-		
+		<div ng-view></div>
 	</main>
+
 	<footer>
 			<p>Copyright &copy; Pulseband 2015</p>
 			<ul>
@@ -205,13 +157,30 @@
 
 	<!-- Controllers -->
 	<script src="js/controllers/MainController.js"></script>
+	<script src="js/controllers/NotificationController.js"></script>
+	<script src="js/controllers/ChallengeController.js"></script>
+	<!-- <script src="js/controllers/StatusController.js"></script> -->
+	<script src="js/controllers/TaskController.js"></script>
+	<script src="js/controllers/AppointmentController.js"></script>
 
 	<!-- Directives -->
-	<script src="js/directives/healthdata.js"></script>
+	<script src="js/directives/notifications.js"></script>
+	<script src="js/directives/notificationsfull.js"></script>
+	<script src="js/directives/challenges.js"></script>
+	<script src="js/directives/challengesfull.js"></script>
+	<!-- <script src="js/directives/statuses.js"></script> -->
+	<script src="js/directives/tasks.js"></script>
+	<script src="js/directives/appointments.js"></script>
 
-	<script src="js/tip.js"></script>
-	<script src="js/bphr.js"></script>
-	<script src="js/script.js"></script>
+	<!-- Services -->
+	<script src="js/services/dataFactory.js"></script>
+
+	<!-- Consistent Elements -->
+
+	<script src="js/main/index/tip.js"></script>
+	<script src="js/main/index/topbar.js"></script>
+	<script src="js/main/index/leftbar.js"></script>
+	<script src="js/main/index/script.js"></script>
 
 </body>
 </html>

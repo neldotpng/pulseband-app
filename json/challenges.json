@@ -1,0 +1,42 @@
+"challenges" : [
+	{
+		"exercise-type" : "step",
+		"progress-type" : "in-progress",
+		"title" : "Exercise Challenge: Walk 5000 Steps",
+		"progress" : "In Progress",
+		"caption" : "You have not yet reached your daily walking goal.
+		Aerobic exercise is an important factor in maintaining heart health.",
+		"link" : "Edit exercise goals",
+		"stats" : "1210",
+		"statcaption" : "steps"
+ 	},
+ 	{
+ 		"exercise-type" : "run",
+ 		"progress-type" : "completed",
+ 		"title" : "Exercise Challenge: Jog a mile",
+ 		"progress" : "Completed",
+ 		"caption" : "Great job! You've improved your time significantly. Keep it up!",
+ 		"link" : "View previous challenges",
+ 		"statheader" : "Your Time",
+ 		"stats" : "9:56",
+ 		"statcaption" : "49"
+ 	}
+],
+
+"statuses" : [
+	{
+		"type" : "positive",
+		"heading" : "Great News!",
+		"description" : "Your blood pressure has steadily decreased this month. See more >"
+	},
+	{
+		"type" : "negative",
+		"heading" : "Are you okay?",
+		"description" : "Your heart rate has been spiked significantly in the past hour. See more >"
+	},
+	{
+		"type" : "advice",
+		"heading" : "Lowering your cholesterol",
+		"description" : "Check out three ways to do it >"
+	}
+]

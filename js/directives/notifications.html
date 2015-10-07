@@ -1,0 +1,10 @@
+<div class="notif fixed" ng-controller="NotificationController">
+	<i class="fa fa-caret-up"></i>
+		<h2>Notifications</h2>
+		<ul>
+			<li ng-repeat="notification in notifications | filter : {featured: 'true'} : true">
+				{{ notification.message }} <a href="{{notification.link}}">{{ notification.cta }}</a>
+			</li>
+			<li class="seeall"><a href="#notifications">See all</a></li>
+		</ul>
+</div>

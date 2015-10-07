@@ -1,0 +1,7 @@
+<ul class="slides" ng-controller="StatusController">
+	<li ng-repeat="status in statuses" class="{{status.type}}">
+		<a href="">
+			<span>{{status.header}}</span><br>{{status.content}}
+		</a>
+	</li>
+</ul>

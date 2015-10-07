@@ -1,0 +1,9 @@
+<ul class="reminders task" ng-controller="TaskController">
+	
+	<li ng-repeat="task in tasks">
+		<p><span><span id="task-date">{{ task.date }}</span>, <span id ="task-time">{{ task.time }}</span> -</span>
+		<span id="task-do">{{ task.do }}</span></p>
+
+		<div class="options"><i class="fa fa-pencil-square-o"></i><i class="fa fa-check-circle"></i></div>
+	</li>
+</ul>
